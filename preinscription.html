@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Préinscription H-Konekt pour particuliers, professionnels et organisateurs de l'écosystème haïtien en France.">
+  <title>Préinscription - H-Konekt</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2" defer></script>
+  <script src="supabase-config.js" defer></script>
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <div class="site-shell form-page">
+    <div class="ambient ambient-one"></div>
+    <div class="ambient ambient-two"></div>
+    <div class="ambient ambient-three"></div>
+
+    <header class="site-header glass-panel">
+      <a class="brand" href="index.html" aria-label="Retour à l'accueil H-Konekt">
+        <img src="assets/images/logo.png" alt="H-Konekt">
+        <span class="brand-name">H-Konekt</span>
+      </a>
+      <nav class="header-actions" aria-label="Navigation principale">
+        <a href="index.html#solution">Solution</a>
+        <a href="index.html#proof">Confiance</a>
+        <a class="button button-small" href="index.html">Accueil</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="form-hero section-pad" aria-labelledby="form-title">
+        <div class="form-copy" data-animate>
+          <p class="eyebrow">Accès anticipé</p>
+          <h1 id="form-title">Préinscription H-Konekt.</h1>
+          <p class="hero-copy">
+            Dites-nous qui vous êtes et ce que vous cherchez. Ces informations permettront de préparer une expérience plus pertinente dès le lancement.
+          </p>
+          <div class="form-benefits glass-panel">
+            <span>Invitation prioritaire</span>
+            <span>Actualités du lancement</span>
+            <span>Premières fonctionnalités</span>
+          </div>
+        </div>
+
+        <aside class="form-sidebar glass-panel" data-animate>
+          <span class="mini-label">Pourquoi ces infos ?</span>
+          <p>
+            H-Konekt connectera des profils très différents. Votre type de profil, votre localisation et vos besoins nous aident à mieux organiser les premiers accès.
+          </p>
+          <div class="sidebar-metric">
+            <strong>500k+</strong>
+            <span>audience Bees Ayiti</span>
+          </div>
+        </aside>
+      </section>
+
+      <section class="form-section section-pad" aria-labelledby="lead-form-title">
+        <form class="profile-form glass-panel" id="lead-form" novalidate data-animate>
+          <input type="hidden" name="source" value="full_preinscription">
+
+          <div class="form-heading">
+            <p class="eyebrow">Votre profil</p>
+            <h2 id="lead-form-title">Rejoindre la liste d'attente.</h2>
+            <p>Les champs marqués d'un astérisque sont nécessaires pour valider votre préinscription.</p>
+          </div>
+
+          <div class="form-grid">
+            <div class="field-group">
+              <label for="full-name">Nom complet *</label>
+              <input id="full-name" name="full_name" type="text" autocomplete="name" placeholder="Votre nom et prénom" required>
+            </div>
+
+            <div class="field-group">
+              <label for="email">Email *</label>
+              <input id="email" name="email" type="email" autocomplete="email" placeholder="vous@email.com" required>
+            </div>
+
+            <div class="field-group">
+              <label for="phone">Téléphone</label>
+              <input id="phone" name="phone" type="tel" autocomplete="tel" placeholder="+33 6 00 00 00 00">
+            </div>
+
+            <div class="field-group">
+              <label for="city">Ville / Région *</label>
+              <input id="city" name="city" type="text" autocomplete="address-level2" placeholder="Paris, Lyon, Marseille..." required>
+            </div>
+
+            <div class="field-group">
+              <label for="user-type">Je suis *</label>
+              <select id="user-type" name="user_type" required>
+                <option value="">Sélectionnez un profil</option>
+                <option value="particulier">Un particulier</option>
+                <option value="professionnel">Un professionnel</option>
+                <option value="organisateur">Un organisateur</option>
+              </select>
+            </div>
+
+            <div class="field-group">
+              <label for="organization">Structure / activité</label>
+              <input id="organization" name="organization_name" type="text" placeholder="Entreprise, association, projet, collectif...">
+            </div>
+
+            <div class="field-group">
+              <label for="website">Site ou réseau social</label>
+              <input id="website" name="website" type="url" placeholder="https://...">
+            </div>
+
+            <div class="field-group">
+              <label for="category">Catégorie principale *</label>
+              <select id="category" name="category" required>
+                <option value="">Sélectionnez une catégorie</option>
+                <option value="gastronomie">Gastronomie : restaurants, traiteurs, chefs</option>
+                <option value="import_distribution">Import & distribution</option>
+                <option value="juridique_conseil_expertise">Juridique, conseil & expertise</option>
+                <option value="finance_gestion_investissement">Finance, gestion & investissement</option>
+                <option value="logistique_transferts_diaspora">Logistique, transferts & diaspora</option>
+                <option value="beaute_bien_etre">Beauté & bien-être</option>
+                <option value="evenementiel">Événementiel</option>
+                <option value="arts_vivants">Arts vivants</option>
+                <option value="arts_visuels">Arts visuels</option>
+                <option value="mode_design">Mode & design</option>
+                <option value="sante_soins">Santé & soins</option>
+                <option value="formation_education">Formation & éducation</option>
+                <option value="technologies">Technologies</option>
+                <option value="media_communication">Média & communication</option>
+                <option value="services_personne">Services & accompagnement à la personne</option>
+                <option value="batiment_techniques">Bâtiment & techniques</option>
+              </select>
+            </div>
+
+            <div class="field-group full-span">
+              <label for="message">Votre activité ou votre besoin en quelques mots</label>
+              <textarea id="message" name="message" rows="5" placeholder="Exemple : DJ événementiel depuis 3 ans, restaurant familial, cabinet de conseil, activité beauté, service technique, besoin de trouver des prestataires..."></textarea>
+            </div>
+          </div>
+
+          <label class="checkbox-field">
+            <input type="checkbox" name="consent_news" value="true" required>
+            <span>J'accepte d'être contacté concernant le lancement de H-Konekt et les informations liées à ma préinscription. *</span>
+          </label>
+
+          <div class="form-actions">
+            <button class="button submit-button" type="submit">
+              <span>Envoyer ma préinscription</span>
+              <span aria-hidden="true">→</span>
+            </button>
+            <p class="form-message" id="form-message" role="status" aria-live="polite"></p>
+          </div>
+        </form>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <a class="brand" href="index.html" aria-label="H-Konekt">
+        <img src="assets/images/logo.png" alt="H-Konekt">
+        <span class="brand-name">H-Konekt</span>
+      </a>
+      <div>
+        <a href="mailto:contact@hkonekt.com">contact@hkonekt.com</a>
+        <span>© 2026 H-Konekt. Tous droits réservés.</span>
+      </div>
+    </footer>
+  </div>
+</body>
+</html>

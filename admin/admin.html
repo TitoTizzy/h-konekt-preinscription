@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Back-office H.KONEKT pour gérer les préinscriptions, les visites et l'image principale.">
+  <title>Admin H.KONEKT</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="admin.css">
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2" defer></script>
+  <script src="../supabase-config.js" defer></script>
+  <script src="admin.js" defer></script>
+</head>
+<body>
+  <main class="admin-shell">
+    <section class="login-view" id="login-view" aria-labelledby="login-title">
+      <div class="login-card glass-panel">
+        <img class="login-logo" src="../assets/images/logo.png" alt="H.KONEKT">
+        <p class="eyebrow">Back-office</p>
+        <h1 id="login-title">Connexion administrateur</h1>
+        <p class="muted">Accédez aux préinscriptions, aux statistiques et à la gestion de l'image principale.</p>
+
+        <form id="login-form" class="login-form" novalidate>
+          <label>
+            Email
+            <input type="email" name="email" autocomplete="email" placeholder="admin@hkonekt.com" required>
+          </label>
+          <label>
+            Mot de passe
+            <input type="password" name="password" autocomplete="current-password" placeholder="••••••••" required>
+          </label>
+          <button class="button" type="submit">
+            <span>Se connecter</span>
+          </button>
+          <button class="button button-ghost demo-button" id="demo-button" type="button">
+            Voir le dashboard en mode démo
+          </button>
+          <p class="message" id="login-message" role="status" aria-live="polite"></p>
+        </form>
+      </div>
+    </section>
+
+    <section class="dashboard-view is-hidden" id="dashboard-view" aria-labelledby="dashboard-title">
+      <header class="admin-header glass-panel">
+        <a class="admin-brand" href="../index.html" aria-label="Voir le site H.KONEKT">
+          <img src="../assets/images/logo.png" alt="H.KONEKT">
+        </a>
+        <div>
+          <p class="eyebrow">Pilotage</p>
+          <h1 id="dashboard-title">Dashboard H.KONEKT</h1>
+        </div>
+        <button class="button button-ghost" id="logout-button" type="button">Déconnexion</button>
+      </header>
+
+      <div class="demo-banner is-hidden" id="demo-banner">
+        Mode démo local : les données affichées sont fictives et les actions ne sont pas envoyées à Supabase.
+      </div>
+
+      <section class="kpi-grid" aria-label="Indicateurs principaux">
+        <article class="kpi-card glass-panel">
+          <span>Total inscrits</span>
+          <strong id="kpi-total-leads">0</strong>
+        </article>
+        <article class="kpi-card glass-panel">
+          <span>Visites comptées</span>
+          <strong id="kpi-page-views">0</strong>
+        </article>
+        <article class="kpi-card glass-panel">
+          <span>Professionnels</span>
+          <strong id="kpi-professionnels">0</strong>
+        </article>
+        <article class="kpi-card glass-panel">
+          <span>Organisateurs</span>
+          <strong id="kpi-organisateurs">0</strong>
+        </article>
+      </section>
+
+      <section class="admin-grid">
+        <article class="panel glass-panel leads-panel">
+          <div class="panel-heading">
+            <div>
+              <p class="eyebrow">Préinscriptions</p>
+              <h2>Leads reçus</h2>
+            </div>
+            <div class="panel-actions">
+              <input id="lead-search" type="search" placeholder="Rechercher...">
+              <button class="button button-small" id="export-button" type="button">Exporter CSV</button>
+            </div>
+          </div>
+
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>Contact</th>
+                  <th>Profil</th>
+                  <th>Catégorie</th>
+                  <th>Ville</th>
+                  <th>Statut</th>
+                  <th>Date</th>
+                </tr>
+              </thead>
+              <tbody id="leads-table-body">
+                <tr>
+                  <td colspan="6">Chargement des préinscriptions...</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="message" id="dashboard-message" role="status" aria-live="polite"></p>
+        </article>
+
+        <aside class="side-stack">
+          <article class="panel glass-panel">
+            <div class="panel-heading compact">
+              <div>
+                <p class="eyebrow">Catégories</p>
+                <h2>Répartition</h2>
+              </div>
+            </div>
+            <div class="category-list" id="category-list">
+              <p class="muted">Aucune donnée pour le moment.</p>
+            </div>
+          </article>
+
+          <article class="panel glass-panel">
+            <div class="panel-heading compact">
+              <div>
+                <p class="eyebrow">CMS</p>
+                <h2>Image hero</h2>
+              </div>
+            </div>
+            <img class="hero-preview" id="hero-preview" src="../assets/images/hero-hkonekt.png" alt="Image hero actuelle">
+            <form class="upload-form" id="hero-upload-form" novalidate>
+              <label>
+                Nouvelle image
+                <input id="hero-file" name="hero_file" type="file" accept="image/png,image/jpeg,image/webp" required>
+              </label>
+              <button class="button" type="submit">
+                <span>Mettre à jour</span>
+              </button>
+              <p class="message" id="upload-message" role="status" aria-live="polite"></p>
+            </form>
+          </article>
+        </aside>
+      </section>
+    </section>
+  </main>
+</body>
+</html>

@@ -88,7 +88,7 @@ function showDashboard() {
 
 async function requireConfig() {
   if (adminClient) return true;
-  setMessage(loginMessage, "Ajoutez vos clés Supabase dans supabase-config.js pour activer le back-office.", "error");
+  setMessage(loginMessage, "Ajoutez vos clés Supabase dans js/supabase-config.js pour activer le back-office.", "error");
   return false;
 }
 

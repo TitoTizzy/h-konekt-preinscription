@@ -29,6 +29,7 @@ html {
 body {
   margin: 0;
   min-height: 100vh;
+  overflow-x: hidden;
   color: var(--text-dark);
   font-family: var(--font-main);
   background:
@@ -142,6 +143,7 @@ select {
   z-index: 1000;
   display: flex;
   width: 100%;
+  max-width: 100vw;
   min-height: 82px;
   align-items: center;
   justify-content: space-between;
@@ -278,11 +280,19 @@ select {
   position: relative;
   display: grid;
   max-width: var(--container);
-  min-height: calc(100vh - 90px);
+  min-height: 100svh;
   align-items: center;
   gap: 42px;
   margin: 0 auto;
-  padding-top: 144px;
+  padding-top: 146px;
+  padding-bottom: 72px;
+}
+
+.hero > *,
+.hero-content,
+.hero-visual-wrap,
+.launch-card > * {
+  min-width: 0;
 }
 
 .hero::before {
@@ -1270,11 +1280,13 @@ p {
   .hero {
     grid-template-columns: minmax(0, 1.06fr) minmax(390px, 0.78fr);
     gap: 54px;
-    padding-top: 40px;
+    min-height: 100svh;
+    padding-top: 148px;
+    padding-bottom: 72px;
   }
 
   .hero-content {
-    padding-top: 28px;
+    padding-top: 0;
   }
 
   .hero-visual {
@@ -1313,21 +1325,28 @@ p {
   }
 }
 
-@media (max-width: 430px) {
+@media (max-width: 699px) {
   .site-header {
-    width: calc(100% - 22px);
-    width: 100%;
     min-height: 72px;
-    padding: 8px 12px;
+    padding: 8px 14px;
+  }
+
+  .brand {
+    gap: 9px;
   }
 
   .brand img {
-    width: 46px;
-    height: 46px;
+    width: 44px;
+    height: 44px;
   }
 
   .brand-name {
-    font-size: 0.98rem;
+    font-size: 0.96rem;
+  }
+
+  .header-actions {
+    gap: 0;
+    padding: 4px;
   }
 
   .header-actions a:not(.button) {
@@ -1335,33 +1354,320 @@ p {
   }
 
   .button-small {
-    min-height: 42px;
+    min-height: 40px;
     padding: 0 14px;
+    font-size: 0.84rem;
   }
 
-  .hero {
-    padding-top: 124px;
+  .hero.section-pad {
+    min-height: auto;
+    gap: 34px;
+    padding: 120px 20px 68px;
   }
 
-  .form-hero {
-    padding-top: 124px;
+  .form-hero.section-pad {
+    padding: 120px 20px 52px;
   }
 
-  .floating-card {
-    max-width: 176px;
-    padding: 12px;
+  h1 {
+    max-width: 100%;
+    font-size: clamp(3rem, 13vw, 4.1rem);
+    line-height: 0.9;
+    overflow-wrap: anywhere;
+  }
+
+  .form-copy h1 {
+    font-size: clamp(2.55rem, 10vw, 3.2rem);
+    line-height: 0.96;
+    overflow-wrap: anywhere;
+  }
+
+  .hero-copy {
+    font-size: 1rem;
+  }
+
+  .launch-card {
+    width: 100%;
+    max-width: 100%;
+    grid-template-columns: 1fr;
+  }
+
+  .launch-card .button {
+    width: 100%;
+  }
+
+  .form-benefits {
+    width: 100%;
+    border-radius: 28px;
   }
 
   .hero-stats {
+    width: 100%;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .hero-visual {
+    width: 100%;
+    transform: none;
+  }
+
+  .visual-badge {
+    display: none;
+  }
+
+  .section-pad {
+    padding-inline: 20px;
+  }
+
+  .target-grid {
     grid-template-columns: 1fr;
+  }
+
+  .quality-points {
+    grid-template-columns: 1fr;
+  }
+
+  .story-gallery {
+    grid-template-columns: 1fr;
+  }
+
+  .story-image-large {
+    grid-row: auto;
+  }
+}
+
+@media (max-width: 430px) {
+  .site-header {
+    width: 100%;
+    min-height: 72px;
+    padding: 8px 12px;
+  }
+
+  .brand {
+    gap: 8px;
+  }
+
+  .brand img {
+    width: 42px;
+    height: 42px;
+  }
+
+  .brand-name {
+    font-size: 0.9rem;
+  }
+
+  .header-actions {
+    max-width: 128px;
+    flex: 0 0 auto;
+    gap: 0;
+    padding: 4px;
+  }
+
+  .header-actions a:not(.button) {
+    display: none;
+  }
+
+  .button-small {
+    min-height: 40px;
+    padding: 0 12px;
+    font-size: 0.8rem;
+  }
+
+  .hero {
+    min-height: auto;
+    gap: 30px;
+    padding: 112px 16px 64px;
+  }
+
+  .form-hero {
+    padding: 112px 16px 48px;
+  }
+
+  h1 {
+    margin-bottom: 18px;
+    max-width: 100%;
+    font-size: clamp(2.65rem, 13vw, 3.2rem);
+    line-height: 0.92;
+    overflow-wrap: anywhere;
+  }
+
+  h2 {
+    font-size: clamp(2rem, 10vw, 2.7rem);
+  }
+
+  .hero-copy {
+    margin-bottom: 22px;
+    font-size: 1rem;
+    line-height: 1.65;
+  }
+
+  .signup-card,
+  .launch-card {
+    width: 100%;
+    max-width: 100%;
+    gap: 18px;
+    padding: 18px;
+    border-radius: 22px;
+  }
+
+  .launch-card strong,
+  .launch-card p {
+    overflow-wrap: anywhere;
+  }
+
+  .launch-card .button {
+    width: 100%;
+    min-width: 0;
+    padding-inline: 16px;
+    font-size: 0.88rem;
+  }
+
+  .trust-strip {
+    gap: 8px;
+  }
+
+  .trust-strip span {
+    font-size: 0.74rem;
+    padding: 8px 10px;
+  }
+
+  .hero-stats {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 6px;
+    width: 100%;
+  }
+
+  .hero-stats div {
+    padding-left: 9px;
+  }
+
+  .hero-stats strong {
+    font-size: 1.35rem;
+  }
+
+  .hero-stats span {
+    font-size: 0.66rem;
+  }
+
+  .hero-visual {
+    width: 100%;
+    min-height: 420px;
+    border-radius: 28px;
+  }
+
+  .hero-visual::before {
+    inset: 8px;
+    border-radius: 22px;
+  }
+
+  .hero-visual img {
+    min-height: 420px;
+  }
+
+  .floating-card {
+    max-width: 154px;
+    padding: 10px 12px;
   }
 
   .hero-visual {
     transform: none;
   }
 
+  .floating-card-top {
+    top: 18px;
+    right: 10px;
+  }
+
+  .floating-card-bottom {
+    bottom: 16px;
+    left: 10px;
+  }
+
   .visual-badge {
     display: none;
+  }
+
+  .section-pad {
+    padding: 64px 16px;
+  }
+
+  .hero.section-pad {
+    padding: 112px 16px 64px;
+  }
+
+  .form-hero.section-pad {
+    padding: 112px 16px 48px;
+  }
+
+  .split-section,
+  .cards-section,
+  .image-story,
+  .quality-section,
+  .final-cta {
+    width: 100%;
+  }
+
+  .target-grid {
+    gap: 14px;
+  }
+
+  .target-card {
+    min-height: 390px;
+  }
+
+  .target-card h3,
+  .target-card p {
+    padding-inline: 22px;
+  }
+
+  .card-icon {
+    margin-inline: 22px;
+  }
+
+  .proof-section,
+  .quality-card,
+  .final-card,
+  .profile-form {
+    border-radius: 28px;
+  }
+
+  .proof-section {
+    width: calc(100% - 20px);
+    padding: 56px 22px;
+  }
+
+  .quality-card,
+  .profile-form {
+    padding: 24px 20px;
+  }
+
+  .form-grid {
+    gap: 14px;
+  }
+
+  .site-footer {
+    padding-inline: 16px;
+  }
+
+  .footer-meta {
+    justify-items: start;
+  }
+}
+
+@media (max-width: 350px) {
+  .brand-name {
+    display: none;
+  }
+
+  .hero-stats {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .hero-stats div {
+    border-left: 0;
+    border-bottom: 1px solid rgba(21, 35, 69, 0.12);
+    padding: 0 0 10px;
   }
 }
 
